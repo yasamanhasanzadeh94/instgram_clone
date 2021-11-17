@@ -36,6 +36,7 @@ class ForgotPasswordState extends State<ForgotPassword>{
              child: Text(
               "Trouble logging in?",
               style: Theme.of(context).textTheme.headline6,
+
              ),
            ),
            Container(
