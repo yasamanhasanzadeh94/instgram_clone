@@ -15,7 +15,7 @@ class MyAppState extends State<MyApp>{
   @override
   Widget build(BuildContext context) {
  return MaterialApp(
-     title: "Instagram",
+     title: "Instagram ui",
    theme: themeData,
    home: LoginPage(),
 
