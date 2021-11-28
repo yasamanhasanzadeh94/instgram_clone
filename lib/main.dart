@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled6/pages/forgot_password.dart';
 import 'package:untitled6/pages/login_page.dart';
+import 'package:untitled6/pages/tab_example.dart';
 import 'package:untitled6/styles/theme.dart';
 
 void main() {
