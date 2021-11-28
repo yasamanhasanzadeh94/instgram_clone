@@ -32,7 +32,7 @@ class ForgotPasswordState extends State<ForgotPassword2>{
               Container(
                 child: Image.network("https://icon-library.com/images/forgot-password-icon/forgot-password-icon-22.jpg"),width:100,height: 100,),
               Container(
-                margin: EdgeInsets.only(bottom: smallSize(context)),
+                margin: EdgeInsets.only(bottom: smallSize(context),top: mediumSize(context)),
                 child: Text(
                   "Trouble logging in?",
                   style: Theme.of(context).textTheme.headline6,
@@ -42,7 +42,7 @@ class ForgotPasswordState extends State<ForgotPassword2>{
               Container(
                   margin: EdgeInsets.symmetric(
                       horizontal: xlargeSize(context),
-                      vertical: standardSize(context)),
+                      vertical: mediumSize(context)),
                   child: Text(
                     "Enter your username or email and we'll \n send you a link to get back into your \n account",
                     textAlign: TextAlign.center,
@@ -72,14 +72,9 @@ class ForgotPasswordState extends State<ForgotPassword2>{
                   child: ElevatedButton(onPressed:() {}, child:Text("Next") )),
               Container(
                 width: fullWidth(context),
-                height: 20,
-                margin: EdgeInsets.only(top: xxSmallSize(context)),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      right: 130,
-                      top: 0,
-                      bottom: 0,
+                      height: 20,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: xxSmallSize(context)),
                       child: Text(
                         "Need more help?",
                         style: Theme
@@ -95,7 +90,7 @@ class ForgotPasswordState extends State<ForgotPassword2>{
                   ],
                 ),
               ),
-              SizedBox(height: smallSize(context),),
+              Sizedbox(height:xxlargeSize(context)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -135,8 +130,9 @@ class ForgotPasswordState extends State<ForgotPassword2>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                          width: 16,
-                          height: 20,
+                        margin: EdgeInsets.only(top: xxlargeSize(context)+standardSize(context)),
+                          width: fullWidth(context)/4,
+                          height: fullHeight(context)/4,
                           child: Image.network(
                               "https://png.pngitem.com/pimgs/s/509-5094186_free-png-psd-peoplepng-whatsapp-instagram-and-facebook.png")),
                       Container(

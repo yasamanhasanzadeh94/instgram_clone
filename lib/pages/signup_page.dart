@@ -47,7 +47,7 @@ class SignUpPageState extends State<SignUpPage> {
                 margin: EdgeInsets.symmetric(
                     horizontal: xxlargeSize(context),
                     vertical: standardSize(context)),
-                child: customTextField(context, "Username",)),
+                child: customTextField(BuildContext, "Username")),
             Container(
               width: fullWidth(context),
                 margin: EdgeInsets.symmetric(
