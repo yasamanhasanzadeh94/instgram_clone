@@ -22,7 +22,7 @@ class MyAppState extends State<MyApp>{
  return MaterialApp(
      title: "Instagram ui",
    theme: themeData,
-   home:HomePage(),
+   home:MainPage(),
 
  );
   }
