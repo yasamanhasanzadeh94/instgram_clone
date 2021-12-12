@@ -89,11 +89,11 @@ Widget story_box(BuildContext context) {
 Widget postBox(BuildContext context) {
   return Container(
     width: fullWidth(context),
-    height: fullHeight(context) / 1.6,
+    height: fullHeight(context) / 1.4,
     child: Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: xxSmallSize(context)),
+          margin: EdgeInsets.symmetric(horizontal: xxSmallSize(context),vertical: smallSize(context)),
           child: Row(
             children: [
               Container(
@@ -117,12 +117,48 @@ Widget postBox(BuildContext context) {
             ],
           ),
         ),
-        AspectRatio(
-          aspectRatio: 16 / 9,
-          child: Container(
-            color: Colors.blue,
+        Container(
+          margin: EdgeInsets.symmetric(vertical: xSmallSize(context)),
+          child: AspectRatio(
+            aspectRatio: 16 / 9,
+            child: Container(width: fullWidth(context),
+              decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fitWidth,image: NetworkImage("https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg"))),
+            )
           ),
         ),
+        Container(margin: EdgeInsets.symmetric(vertical:xxSmallSize(context) ),
+          child: Row(children: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.recommend)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.mode_comment_outlined)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.share)),
+            Expanded(child: SizedBox()),
+            IconButton(onPressed: () {}, icon: Icon(Icons.save))
+          ],),
+        ),
+        Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top:xSmallSize(context)),
+          child:
+        Row(children: [
+          Text("138 likes",style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
+          Expanded(child: SizedBox())
+        ],),),
+
+        Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top: xSmallSize(context)),
+          child:
+          Row(children: [
+            Text("Text1",style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
+            Expanded(child: SizedBox())
+          ],),),
+        Container(margin: EdgeInsetsDirectional.only(start:xxSmallSize(context),top:xSmallSize(context),bottom: largeSize(context))
+  ,child:
+         Row(
+           children:[
+
+  Container(margin: EdgeInsets.symmetric(horizontal: smallSize(context))
+    ,child: Text("He wakes up.He sees the sun rise.He brushes his teeth. \n He eats his breakfast",
+               overflow: TextOverflow.ellipsis,),
+  ),
+         ]) ,),
+
       ],
     ),
   );
