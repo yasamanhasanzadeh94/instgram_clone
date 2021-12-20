@@ -11,6 +11,10 @@ List<PostModel> fakeHomeList(){
   return homePosts;
 }
 
+
+
+
+
 List<Story> homeStoriesFake(){
   List<Story> stories = [];
   stories.add(Story("avatar", "userName"));
