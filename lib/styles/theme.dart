@@ -4,6 +4,7 @@ import 'colors.dart';
 
 ThemeData themeData = ThemeData(
     backgroundColor: backgroundColor,
+    iconTheme: IconThemeData(color: Colors.black),
     elevatedButtonTheme:
         ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical:16 )

@@ -3,6 +3,7 @@ import 'package:untitled6/pages/forgot_password.dart';
 import 'package:untitled6/pages/home_page.dart';
 import 'package:untitled6/pages/login_page.dart';
 import 'package:untitled6/pages/main_page.dart';
+import 'package:untitled6/pages/profile_page.dart';
 import 'package:untitled6/pages/tab_example.dart';
 import 'package:untitled6/pages/tab_example1.dart';
 import 'package:untitled6/styles/theme.dart';
@@ -20,9 +21,10 @@ class MyAppState extends State<MyApp>{
   @override
   Widget build(BuildContext context) {
  return MaterialApp(
+   debugShowCheckedModeBanner: false,
      title: "Instagram ui",
    theme: themeData,
-   home:MainPage(),
+   home:ProfilePage(),
 
  );
   }
