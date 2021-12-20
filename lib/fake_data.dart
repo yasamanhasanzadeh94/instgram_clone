@@ -3,11 +3,12 @@ import 'package:untitled6/pages/models/story.dart';
 
 List<PostModel> fakeHomeList(){
   List<PostModel> homePosts=[];
-  homePosts.add(
-      PostModel("", "userName", "caption", 235, ""));
-  PostModel("", "userName1", "caption1", 140, "");
-  PostModel("", "userName2", "caption2", 124, "");
-  PostModel("", "userName3", "caption3", 500, "");
+  homePosts.add(PostModel("", "userName", "caption", 235, ""));
+  homePosts.add(PostModel("", "userName1", "caption1", 140, ""));
+  homePosts.add(PostModel("", "userName2", "caption2", 124, ""));
+  homePosts.add(PostModel("", "userName3", "caption3", 500, ""));
+
+
   return homePosts;
 }
 

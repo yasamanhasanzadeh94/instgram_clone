@@ -40,21 +40,20 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               width: fullWidth(context),
               height: 150,
-              child: ListView.builder(itemBuilder: (context, index) => story_box(context, homeStoriesFake()[index]),
+              child: ListView.builder(
+                itemBuilder: (context, index) =>
+                    story_box(context, homeStoriesFake()[index]),
                 itemCount: homeStoriesFake().length,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
-
-
               ),
             ),
             ListView.builder(
-             itemBuilder: (context, index) => postBox(context, fakeHomeList()[index]),
+              itemBuilder: (context, index) =>
+                  postBox(context, fakeHomeList()[index]),
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: fakeHomeList().length,
-
             )
           ],
         ),
@@ -63,7 +62,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget story_box(BuildContext context,Story story) {
+Widget story_box(BuildContext context, Story story) {
   return Column(
     children: [
       Container(
@@ -84,14 +83,15 @@ Widget story_box(BuildContext context,Story story) {
   );
 }
 
-Widget postBox(BuildContext context,PostModel post) {
+Widget postBox(BuildContext context, PostModel post) {
   return Container(
     width: fullWidth(context),
     height: fullHeight(context) / 1.4,
     child: Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: xxSmallSize(context),vertical: smallSize(context)),
+          margin: EdgeInsets.symmetric(
+              horizontal: xxSmallSize(context), vertical: smallSize(context)),
           child: Row(
             children: [
               Container(
@@ -99,9 +99,7 @@ Widget postBox(BuildContext context,PostModel post) {
                 width: fullWidth(context) / 10,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                          post.avatar))),
+                    image: DecorationImage(image: NetworkImage(post.avatar))),
               ),
               Container(
                   margin:
@@ -118,40 +116,66 @@ Widget postBox(BuildContext context,PostModel post) {
         Container(
           margin: EdgeInsets.symmetric(vertical: xSmallSize(context)),
           child: AspectRatio(
-            aspectRatio: 16 / 9,
-            child: Container(width: fullWidth(context),
-              decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fitWidth,image: NetworkImage(post.image))),
-            )
+              aspectRatio: 16 / 9,
+              child: Container(
+                width: fullWidth(context),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.fitWidth, image: NetworkImage(post.image))),
+              )),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(vertical: xxSmallSize(context)),
+          child: Row(
+            children: [
+              IconButton(onPressed: () {}, icon: Image.asset("heart_border.png")),
+              IconButton(
+                  onPressed: () {}, icon: Icon(Icons.mode_comment_outlined)),
+              IconButton(onPressed: () {}, icon: Icon(Icons.share)),
+              Expanded(child: SizedBox()),
+              IconButton(onPressed: () {}, icon: Icon(Icons.save))
+            ],
           ),
         ),
-        Container(margin: EdgeInsets.symmetric(vertical:xxSmallSize(context) ),
-          child: Row(children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.recommend)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.mode_comment_outlined)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.share)),
-            Expanded(child: SizedBox()),
-            IconButton(onPressed: () {}, icon: Icon(Icons.save))
-          ],),
+        Container(
+          margin: EdgeInsetsDirectional.only(
+              start: smallSize(context), top: xSmallSize(context)),
+          child: Row(
+            children: [
+              Text(
+                "${post.likeCount} likes",
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.left,
+              ),
+              Expanded(child: SizedBox())
+            ],
+          ),
         ),
-        Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top:xSmallSize(context)),
-          child:
-        Row(children: [
-          Text("${post.likeCount} likes",style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
-          Expanded(child: SizedBox())
-        ],),),
-
-        Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top: xSmallSize(context)),
-          child:
-          Row(children: [
-            Text(post.userName,style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
-            Expanded(child: SizedBox())
-          ],),),
-        Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top:xSmallSize(context),bottom: largeSize(context)),
-          width: fullWidth(context)
-  ,child:
-         Text(post.caption,
-                    overflow: TextOverflow.ellipsis,) ,),
-
+        Container(
+          margin: EdgeInsetsDirectional.only(
+              start: smallSize(context), top: xSmallSize(context)),
+          child: Row(
+            children: [
+              Text(
+                post.userName,
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.left,
+              ),
+              Expanded(child: SizedBox())
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsetsDirectional.only(
+              start: smallSize(context),
+              top: xSmallSize(context),
+              bottom: largeSize(context)),
+          width: fullWidth(context),
+          child: Text(
+            post.caption,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     ),
   );
