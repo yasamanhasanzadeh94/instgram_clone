@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled6/pages/models/post_model.dart';
+import 'package:untitled6/pages/models/story.dart';
 import 'package:untitled6/styles/dimens.dart';
+
+import '../fake_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,27 +40,21 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               width: fullWidth(context),
               height: 150,
-              child: ListView(
+              child: ListView.builder(itemBuilder: (context, index) => story_box(context, homeStoriesFake()[index]),
+                itemCount: homeStoriesFake().length,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
-                children: [
-                  story_box(context),
-                  story_box(context),
-                  story_box(context),
-                  story_box(context),
-                  story_box(context),
-                  story_box(context),
-                ],
+
+
               ),
             ),
-            ListView(
+            ListView.builder(
+             itemBuilder: (context, index) => postBox(context, fakeHomeList()[index]),
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              children: [
-                postBox(context),
-                postBox(context),
-                postBox(context),
-                postBox(context),
-                postBox(context),
-              ],
+              itemCount: fakeHomeList().length,
+
             )
           ],
         ),
@@ -65,7 +63,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget story_box(BuildContext context) {
+Widget story_box(BuildContext context,Story story) {
   return Column(
     children: [
       Container(
@@ -77,16 +75,16 @@ Widget story_box(BuildContext context) {
             shape: BoxShape.circle,
             image: DecorationImage(
                 image: NetworkImage(
-                  "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg",
+                  story.avatar,
                 ),
                 fit: BoxFit.cover)),
       ),
-      Text("name1")
+      Text(story.userName)
     ],
   );
 }
 
-Widget postBox(BuildContext context) {
+Widget postBox(BuildContext context,PostModel post) {
   return Container(
     width: fullWidth(context),
     height: fullHeight(context) / 1.4,
@@ -103,13 +101,13 @@ Widget postBox(BuildContext context) {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         image: NetworkImage(
-                            "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg"))),
+                          post.avatar))),
               ),
               Container(
                   margin:
                       EdgeInsetsDirectional.only(start: xSmallSize(context)),
                   child: Text(
-                    "Text1",
+                    post.userName,
                     style: Theme.of(context).textTheme.bodyText1,
                   )),
               Expanded(child: SizedBox()),
@@ -122,7 +120,7 @@ Widget postBox(BuildContext context) {
           child: AspectRatio(
             aspectRatio: 16 / 9,
             child: Container(width: fullWidth(context),
-              decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fitWidth,image: NetworkImage("https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg"))),
+              decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fitWidth,image: NetworkImage(post.image))),
             )
           ),
         ),
@@ -138,26 +136,21 @@ Widget postBox(BuildContext context) {
         Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top:xSmallSize(context)),
           child:
         Row(children: [
-          Text("138 likes",style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
+          Text("${post.likeCount} likes",style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
           Expanded(child: SizedBox())
         ],),),
 
         Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top: xSmallSize(context)),
           child:
           Row(children: [
-            Text("Text1",style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
+            Text(post.userName,style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.left,),
             Expanded(child: SizedBox())
           ],),),
-        Container(margin: EdgeInsetsDirectional.only(start:xxSmallSize(context),top:xSmallSize(context),bottom: largeSize(context))
+        Container(margin: EdgeInsetsDirectional.only(start:smallSize(context),top:xSmallSize(context),bottom: largeSize(context)),
+          width: fullWidth(context)
   ,child:
-         Row(
-           children:[
-
-  Container(margin: EdgeInsets.symmetric(horizontal: smallSize(context))
-    ,child: Text("He wakes up.He sees the sun rise.He brushes his teeth. \n He eats his breakfast",
-               overflow: TextOverflow.ellipsis,),
-  ),
-         ]) ,),
+         Text(post.caption,
+                    overflow: TextOverflow.ellipsis,) ,),
 
       ],
     ),
