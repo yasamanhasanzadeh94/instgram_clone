@@ -26,12 +26,10 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.white,
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.chat,
-                color: Colors.black,
-              ))
+          IconButton(onPressed: () {},
+              icon: Image.asset(
+                'assets/share.png', width: iconSizeLarge(context),
+                height: iconSizeLarge(context),))
         ],
       ),
       body: SingleChildScrollView(
@@ -49,9 +47,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListView.builder(
-              itemBuilder: (context, index) => PostBox(
-                post: fakeHomeList()[index],
-              ),
+              itemBuilder: (context, index) =>
+                  PostBox(
+                    post: fakeHomeList()[index],
+                  ),
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: fakeHomeList().length,
@@ -95,121 +94,134 @@ class PostBox extends StatefulWidget {
 
 class _PostBoxState extends State<PostBox> {
   String likeImage = 'assets/heart_border.png';
+  String saveImage = 'assets/unsave.png';
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: fullWidth(context),
-      height: fullHeight(context) / 1.4,
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(
-                horizontal: xxSmallSize(context), vertical: smallSize(context)),
-            child: Row(
-              children: [
-                Container(
-                  height: fullWidth(context) / 10,
-                  width: fullWidth(context) / 10,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: NetworkImage(widget.post.avatar))),
-                ),
-                Container(
-                    margin:
-                        EdgeInsetsDirectional.only(start: xSmallSize(context)),
-                    child: Text(
-                      widget.post.userName,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    )),
-                Expanded(child: SizedBox()),
-                IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz))
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: xSmallSize(context)),
-            child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Container(
-                  width: fullWidth(context),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fitWidth,
-                          image: NetworkImage(widget.post.image))),
-                )),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: xxSmallSize(context)),
-            child: Row(
-              children: [
-                IconButton(
-                    onPressed: () {
-                      if (likeImage == 'assets/heart_border.png') {
-                        setState(() {
-                          likeImage = 'assets/heart_fill.png';
-                        });
-                      } else {
-                        setState(() {
-                          likeImage = 'assets/heart_border.png';
-                        });
-                      }
-                    },
-                    icon: Image.asset(
-                      likeImage,
-                      width: iconSizeLarge(context),
-                      height: iconSizeLarge(context),
-                    )),
-                IconButton(
-                    onPressed: () {}, icon: Icon(Icons.mode_comment_outlined)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.share)),
-                Expanded(child: SizedBox()),
-                IconButton(onPressed: () {}, icon: Icon(Icons.save))
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsetsDirectional.only(
-                start: smallSize(context), top: xSmallSize(context)),
-            child: Row(
-              children: [
-                Text(
-                  "${widget.post.likeCount} likes",
-                  style: Theme.of(context).textTheme.bodyText1,
-                  textAlign: TextAlign.left,
-                ),
-                Expanded(child: SizedBox())
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsetsDirectional.only(
-                start: smallSize(context), top: xSmallSize(context)),
-            child: Row(
-              children: [
-                Text(
-                  widget.post.userName,
-                  style: Theme.of(context).textTheme.bodyText1,
-                  textAlign: TextAlign.left,
-                ),
-                Expanded(child: SizedBox())
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsetsDirectional.only(
-                start: smallSize(context),
-                top: xSmallSize(context),
-                bottom: largeSize(context)),
-            width: fullWidth(context),
-            child: Text(
-              widget.post.caption,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
+        width: fullWidth(context),
+        height: fullHeight(context) / 1.4,
+        child: Column(
+            children: [
+        Container(
+        margin: EdgeInsets.symmetric(
+        horizontal: xxSmallSize(context), vertical: smallSize(context)),
+    child: Row(
+    children: [
+    Container(
+    height: fullWidth(context) / 10,
+    width: fullWidth(context) / 10,
+    decoration: BoxDecoration(
+    shape: BoxShape.circle,
+    image: DecorationImage(
+    image: NetworkImage(widget.post.avatar),fit: BoxFit.cover)),
+    ),
+    Container(
+    margin:
+    EdgeInsetsDirectional.only(start: xSmallSize(context)),
+    child: Text(
+    widget.post.userName,
+    style: Theme.of(context).textTheme.bodyText1,
+    )),
+    Expanded(child: SizedBox()),
+    IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz))
+    ],
+    ),
+    ),
+    Container(
+    margin: EdgeInsets.symmetric(vertical: xSmallSize(context)),
+    child: AspectRatio(
+    aspectRatio: 16 / 9,
+    child: Container(
+    width: fullWidth(context),
+    decoration: BoxDecoration(
+    image: DecorationImage(
+    fit: BoxFit.fitWidth,
+    image: NetworkImage(widget.post.image))),
+    )),
+    ),
+    Container(
+    margin: EdgeInsets.symmetric(vertical: xxSmallSize(context)),
+    child: Row(
+    children: [
+    IconButton(
+    onPressed: () {
+    if (likeImage == 'assets/heart_border.png') {
+    setState(() {
+    likeImage = 'assets/heart_fill.png';
+    });
+    } else {
+    setState(() {
+    likeImage = 'assets/heart_border.png';
+    });
+    }
+    },
+    icon: Image.asset(
+    likeImage,
+    width: iconSizeLarge(context),
+    height: iconSizeLarge(context),
+    )),
+    IconButton(
+    onPressed: () {}, icon: Image.asset('assets/comment.png')),
+    IconButton(onPressed: () {}, icon: Image.asset('assets/share.png',width: iconSizeLarge(context),height: iconSizeLarge(context),)),
+    Expanded(child: SizedBox()),
+    IconButton(onPressed: () {
+    if(saveImage == 'assets/unsave.png'){
+    setState(() {
+    saveImage = 'assets/save.png';
+    });
+    } else{
+    setState(() {
+    saveImage = 'assets/unsave.png';
+    });
+    }
+    },
+    icon: Image.asset(saveImage,width: iconSizeLarge(context),
+    height: iconSizeLarge(context),),)
+    ],
+    ),
+    ),
+    Container(
+    margin: EdgeInsetsDirectional.only(
+    start: smallSize(context), top: xSmallSize(context)),
+    child: Row(
+    children: [
+    Text(
+    "${widget.post.likeCount} likes",
+    style: Theme.of(context).textTheme.bodyText1,
+    textAlign: TextAlign.left,
+    ),
+    Expanded(child: SizedBox())
+    ],
+    ),
+    ),
+    Container(
+    margin: EdgeInsetsDirectional.only(
+    start: smallSize(context), top: xSmallSize(context)),
+    child: Row(
+    children: [
+    Text(
+    widget.post.userName,
+    style: Theme.of(context).textTheme.bodyText1,
+    textAlign: TextAlign.left,
+    ),
+    Expanded(child: SizedBox())
+    ],
+    ),
+    ),
+    Container(
+    margin: EdgeInsetsDirectional.only(
+    start: smallSize(context),
+    top: xSmallSize(context),
+    bottom: largeSize(context)),
+    width: fullWidth(context),
+    child: Text(
+    widget.post.caption,
+    overflow: TextOverflow.ellipsis,
+    ),
+    ),
+    ],
+    ),
     );
   }
 }

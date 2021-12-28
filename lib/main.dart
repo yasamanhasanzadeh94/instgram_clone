@@ -24,7 +24,7 @@ class MyAppState extends State<MyApp>{
    debugShowCheckedModeBanner: false,
      title: "Instagram ui",
    theme: themeData,
-   home:ProfilePage(),
+   home:HomePage(),
 
  );
   }
