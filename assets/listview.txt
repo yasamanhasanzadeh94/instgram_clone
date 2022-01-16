@@ -1,0 +1,20 @@
+ListView(scrollDirection: Axis.horizontal,shrinkWrap: true,
+            children: [
+          Column(
+            children: [
+              Container(
+                  margin: EdgeInsets.symmetric(
+                      horizontal: xxSmallSize(context), vertical: xxSmallSize(context)),
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/offer.jfif"),),
+                    shape: BoxShape.rectangle,borderRadius:BorderRadius.circular(20),)),
+              Text("Offers")
+
+            ],
+          ),
+          Column(),
+          Column(),
+          Column(),
+          Column(),
+        ]),

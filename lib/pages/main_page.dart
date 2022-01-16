@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled6/pages/forgot_password.dart';
 import 'package:untitled6/pages/home_page.dart';
 import 'package:untitled6/pages/login_page.dart';
+import 'package:untitled6/pages/profile_page.dart';
 import 'package:untitled6/pages/signup_page.dart';
 import 'package:untitled6/pages/tab_example.dart';
 
@@ -42,9 +43,9 @@ class _MainPageState extends State<MainPage> {
     switch(index){
       case 0 : return HomePage();
       case 1 : return LoginPage();
-      case 0 : return SignUpPage();
-      case 0 : return ForgotPassword();
-      case 0 : return TabExample();
+      case 2 : return SignUpPage();
+      case 3 : return ForgotPassword();
+      case 4 : return ProfilePage();
       default:
         return HomePage();
 

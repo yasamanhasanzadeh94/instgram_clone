@@ -56,3 +56,26 @@ Widget phoneTextField(BuildContext context, String hint,
     ),
   );
 }
+Widget TextFieldMonkey(BuildContext context,String hint){
+  return Container(
+    decoration: BoxDecoration(color: Colors.grey.shade200,
+        border: Border.all(style: BorderStyle.none ),borderRadius: BorderRadius.circular(35)),
+    child: Row(
+      children: [
+        Expanded(
+          child: TextField(
+            decoration: InputDecoration(
+              contentPadding:
+              EdgeInsets.symmetric(horizontal: mediumSize(context)),
+              hintText: hint,
+              hintStyle: Theme.of(context).textTheme.bodyText2,
+              border: InputBorder.none,
+
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+  
+}

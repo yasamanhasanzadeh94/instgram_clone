@@ -100,7 +100,6 @@ class _PostBoxState extends State<PostBox> {
   Widget build(BuildContext context) {
     return Container(
         width: fullWidth(context),
-        height: fullHeight(context) / 1.4,
         child: Column(
             children: [
         Container(
