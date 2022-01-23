@@ -56,10 +56,10 @@ Widget phoneTextField(BuildContext context, String hint,
     ),
   );
 }
-Widget TextFieldMonkey(BuildContext context,String hint){
-  return Container(
+Widget TextFieldMonkey(BuildContext context,String hint,{IconData? iconData}){
+  return Container(margin: EdgeInsets.symmetric(horizontal: standardSize(context)),
     decoration: BoxDecoration(color: Colors.grey.shade200,
-        border: Border.all(style: BorderStyle.none ),borderRadius: BorderRadius.circular(35)),
+        border: Border.all(style: BorderStyle.none ),borderRadius: BorderRadius.circular(20)),
     child: Row(
       children: [
         Expanded(
@@ -68,8 +68,9 @@ Widget TextFieldMonkey(BuildContext context,String hint){
               contentPadding:
               EdgeInsets.symmetric(horizontal: mediumSize(context)),
               hintText: hint,
-              hintStyle: Theme.of(context).textTheme.bodyText2,
+              hintStyle: TextStyle(color: Colors.grey,),
               border: InputBorder.none,
+              suffixIcon: iconData == null ? SizedBox() : Icon(iconData,color: Colors.grey.shade500,)
 
             ),
           ),
