@@ -65,12 +65,10 @@ Widget TextFieldMonkey(BuildContext context,String hint,{IconData? iconData}){
         Expanded(
           child: TextField(
             decoration: InputDecoration(
-              contentPadding:
-              EdgeInsets.symmetric(horizontal: mediumSize(context)),
               hintText: hint,
               hintStyle: TextStyle(color: Colors.grey,),
               border: InputBorder.none,
-              suffixIcon: iconData == null ? SizedBox() : Icon(iconData,color: Colors.grey.shade500,)
+              prefixIcon: iconData == null ? SizedBox() : Icon(iconData,color: Colors.grey.shade500,),
 
             ),
           ),
@@ -79,4 +77,29 @@ Widget TextFieldMonkey(BuildContext context,String hint,{IconData? iconData}){
     ),
   );
   
+}
+
+
+Widget ProfileTextField(BuildContext context,String hint,{IconData? iconData}){
+  return Container(margin: EdgeInsets.symmetric(horizontal: standardSize(context)),
+    decoration: BoxDecoration(color: Colors.grey.shade200,
+        border: Border.all(style: BorderStyle.none ),borderRadius: BorderRadius.circular(50)),
+    child: Row(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: TextField(textAlign: TextAlign.start,
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: standardSize(context),vertical: xxSmallSize(context)),
+              labelStyle: TextStyle(color: Colors.grey,fontSize: 12,),
+              labelText:hint ,
+              border: InputBorder.none,
+              prefixIcon: iconData == null ? SizedBox() : Icon(iconData,color: Colors.grey.shade500,),
+
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
 }

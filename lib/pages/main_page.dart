@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled6/pages/forgot_password.dart';
 import 'package:untitled6/pages/home_page.dart';
-import 'package:untitled6/pages/login_page.dart';
 import 'package:untitled6/pages/profile_page.dart';
-import 'package:untitled6/pages/signup_page.dart';
-import 'package:untitled6/pages/tab_example.dart';
+import 'package:untitled6/styles/dimens.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -15,40 +12,39 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int index = 0;
+  int index = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: index,
+      bottomNavigationBar: BottomNavigationBar(currentIndex: index,iconSize: 12,
         onTap: (value) {
           setState(() {
             index = value;
           });
         },
-        selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey.shade700,
-      showSelectedLabels: false,
+        unselectedItemColor: Colors.grey,selectedItemColor:Colors.deepOrange,
+        unselectedLabelStyle: TextStyle(color: Colors.grey),
         items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.search),label: "Search"),
-        BottomNavigationBarItem(icon: Icon(Icons.add),label: "Add"),
-        BottomNavigationBarItem(icon: Icon(Icons.recommend),label: "like"),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle),label: "Profile"),
-      ],),
+          BottomNavigationBarItem(icon: Image.asset("assets/menu.png",width: 30,height: 32,),label: "Menu"),
+          BottomNavigationBarItem(icon: Image.asset("assets/offer.png",width: 30,height: 32,),label: "Offers"),
+          BottomNavigationBarItem(icon: Image.asset("assets/home-button.png",width: 30,height: 32,),label: ""),
+          BottomNavigationBarItem(icon: Image.asset("assets/user.png",width: 30,height: 32,),label: "Profile"),
+          BottomNavigationBarItem(icon: Image.asset("assets/more.png",width: 30,height: 32,),label: "More"),
+        ],),
+
       body: body(),
     );
   }
-  Widget body(){
-    switch(index){
-      case 0 : return HomePage();
-      case 1 : return LoginPage();
-      case 2 : return SignUpPage();
-      case 3 : return ForgotPassword();
-      case 4 : return ProfilePage();
-      default:
-        return HomePage();
 
-    }
+}
+Widget body(){
+  var index;
+  switch(index){
+    case 0:return HomeMonkey();
+    case 1: return HomeMonkey();
+    case 2:return HomeMonkey();
+    case 3: return ProfilePage();
+    case 4: return HomeMonkey();
+    default: return HomeMonkey();
   }
 }
